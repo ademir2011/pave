@@ -9,9 +9,6 @@ void main() {
       home: SplashScreen(),
       initialRoute: '/',
       routes: {
-        //Home Module
-        SplashScreen.route: (_) => SplashScreen(),
-
         //Autentication Module
         Login.route: (_) => Login(),
         SignUp.route: (_) => SignUp(),

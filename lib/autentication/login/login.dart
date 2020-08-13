@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pave/autentication/login/login_controller.dart';
 import 'package:pave/autentication/signup/signup.dart';
 import 'package:pave/components/CRaisedButton.dart';
 import 'package:pave/components/CFlatButton.dart';
 import 'package:pave/components/CRaisedButtonSecondary.dart';
 import 'package:pave/components/CTextFormField.dart';
-import 'package:pave/repositories/auth_repository.dart';
 
 class Login extends StatefulWidget {
   static final String route = '/login';
@@ -15,21 +15,27 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
-  final _tffc_login = TextEditingController();
-  final _tffc_password = TextEditingController();
-
   var _txtAutentication = 'Entrar';
 
-  final AuthRepository _auth = AuthRepository();
+  final loginController = LoginController();
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  void changeTxtAutentication(String value) {
+    setState(() {
+      _txtAutentication = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      key: loginController.scaffoldKey,
       body: Container(
-        color: Colors.green,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/bg_image.png'),
+            fit: BoxFit.contain,
+          ),
+        ),
         child: Form(
           key: _formKey,
           child: Container(
@@ -40,15 +46,16 @@ class _LoginState extends State<Login> {
                 Column(
                   children: <Widget>[
                     CTextFormField(
-                      controller: _tffc_login,
+                      controller: loginController.tffcLogin,
                       hintText: 'E-mail',
-                      validator: (value) {},
+                      validator: (value) =>
+                          loginController.validatorEmail(value),
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
                     CTextFormField(
-                      controller: _tffc_password,
+                      controller: loginController.tffcPassword,
                       hintText: 'Senha',
                       validator: (value) {},
                       isPasswordField: true,
@@ -61,44 +68,14 @@ class _LoginState extends State<Login> {
                     CRaisedButton(
                       title: _txtAutentication,
                       onPressed: () async {
-                        setState(() => _txtAutentication = 'CARREGANDO...');
-                        await _auth
-                            .signInEmailAndPassword(
-                                email: _tffc_login.text,
-                                password: _tffc_password.text)
-                            .then((value) {
-                          print(value);
-                          if (value != null) {
-                          } else {
-                            _scaffoldKey.currentState.showSnackBar(
-                              SnackBar(
-                                content: Text('Login ou senha incorretos!'),
-                              ),
-                            );
-                          }
-                        }).catchError(
-                          (e) {
-                            _scaffoldKey.currentState.showSnackBar(
-                              SnackBar(
-                                content: Text('Houve um erro de autenticação!'),
-                              ),
-                            );
-                            print(e.toString());
-                          },
-                        );
-
-                        setState(() => _txtAutentication = 'Entrar');
+                        await loginController.authorize(changeTxtAutentication);
                       },
                     ),
                     SizedBox(height: 20.0),
                     CRaisedButtonSecondary(
                       title: 'Cadastre-se',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUp()),
-                        );
-                      },
+                      onPressed: () =>
+                          Navigator.pushNamed(context, SignUp.route),
                     ),
                   ],
                 ),
