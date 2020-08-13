@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/bg_image.png'),
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           ),
         ),
         child: Form(
@@ -41,8 +41,13 @@ class _LoginState extends State<Login> {
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 50.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
+                SizedBox(height: 20),
+                Image(
+                  image: AssetImage('assets/images/logo.png'),
+                  height: 65,
+                ),
                 Column(
                   children: <Widget>[
                     CTextFormField(
@@ -60,11 +65,11 @@ class _LoginState extends State<Login> {
                       validator: (value) {},
                       isPasswordField: true,
                     ),
+                    CFlatButton(),
                   ],
                 ),
                 Column(
                   children: <Widget>[
-                    CFlatButton(),
                     CRaisedButton(
                       title: _txtAutentication,
                       onPressed: () async {
@@ -79,6 +84,7 @@ class _LoginState extends State<Login> {
                     ),
                   ],
                 ),
+                SizedBox(height: 50),
               ],
             ),
           ),

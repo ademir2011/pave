@@ -18,13 +18,6 @@ class CTextFormField extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.80),
         borderRadius: BorderRadius.circular(30.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.90),
-            offset: Offset(0, 2),
-            blurRadius: 2,
-          ),
-        ],
       ),
       child: TextFormField(
         controller: controller,
