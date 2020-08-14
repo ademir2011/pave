@@ -39,7 +39,6 @@ class CTextFormField extends StatelessWidget {
           ),
           hintText: this.hintText,
           hintStyle: TextStyle(
-            fontFamily: 'Roboto',
             fontWeight: FontWeight.w400,
             decoration: TextDecoration.none,
             color: Color(0xFFBF4949),
