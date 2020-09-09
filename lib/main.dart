@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pave/autentication/lost_password/lost_password.dart';
-import 'package:pave/autentication/signup/signup.dart';
-import 'autentication/login/login.dart';
+import 'package:pave/autentication/views/lost_password.dart';
+import 'package:pave/autentication/views/signup.dart';
+import 'package:pave/main/views/restaurants.dart';
+import 'autentication/views/login.dart';
 
 void main() {
   runApp(
@@ -13,6 +14,9 @@ void main() {
         Login.route: (_) => Login(),
         SignUp.route: (_) => SignUp(),
         LostPassword.route: (_) => LostPassword(),
+
+        //Main
+        Restaurants.route: (_) => Restaurants(),
       },
     ),
   );

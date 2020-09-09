@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:766754447514:android:376fecb03bc4aaa369ff23",
+        "android_client_info": {
+          "package_name": "br.com.pave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766754447514-j1o59aleqqskf70h2ctpm8jcslks6tv9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.pave",
+            "certificate_hash": "3a1b16e5692c0a54949727d53e582ddef8b1c1f3"
+          }
+        },
+        {
+          "client_id": "766754447514-4qc1c3rk2l6iq29mqu6m61ssgnpn56lo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1OevSkCOBU_M_veUva3Zkvgcj6v2DfgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766754447514-4qc1c3rk2l6iq29mqu6m61ssgnpn56lo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:766754447514:android:cefdb06698b31f0c69ff23",
         "android_client_info": {
           "package_name": "com.example.pave"

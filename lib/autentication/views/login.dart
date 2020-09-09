@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pave/autentication/login/login_controller.dart';
-import 'package:pave/autentication/signup/signup.dart';
+import 'package:pave/autentication/controllers/login_controller.dart';
+import 'package:pave/autentication/views/signup.dart';
 import 'package:pave/components/CRaisedButton.dart';
 import 'package:pave/components/CFlatButton.dart';
 import 'package:pave/components/CRaisedButtonSecondary.dart';
 import 'package:pave/components/CTextFormField.dart';
+import 'package:pave/main/views/restaurants.dart';
 
 class Login extends StatefulWidget {
   static final String route = '/login';
@@ -15,20 +16,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
-  var _txtAutentication = 'Entrar';
-
-  final loginController = LoginController();
-
-  void changeTxtAutentication(String value) {
-    setState(() {
-      _txtAutentication = value;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: loginController.scaffoldKey,
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -51,16 +41,15 @@ class _LoginState extends State<Login> {
                 Column(
                   children: <Widget>[
                     CTextFormField(
-                      controller: loginController.tffcLogin,
+                      // controller: loginController.tffcLogin,
                       hintText: 'E-mail',
-                      validator: (value) =>
-                          loginController.validatorEmail(value),
+                      validator: (_) {},
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
                     CTextFormField(
-                      controller: loginController.tffcPassword,
+                      // controller: loginController.tffcPassword,
                       hintText: 'Senha',
                       validator: (value) {},
                       isPasswordField: true,
@@ -71,9 +60,10 @@ class _LoginState extends State<Login> {
                 Column(
                   children: <Widget>[
                     CRaisedButton(
-                      title: _txtAutentication,
-                      onPressed: () async {
-                        await loginController.authorize(changeTxtAutentication);
+                      title: 'Entrar',
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, Restaurants.route);
                       },
                     ),
                     SizedBox(height: 20.0),

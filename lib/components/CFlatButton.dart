@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pave/autentication/lost_password/lost_password.dart';
+import 'package:pave/autentication/views/lost_password.dart';
 
 class CFlatButton extends StatelessWidget {
   @override

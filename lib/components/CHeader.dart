@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pave/autentication/login/login.dart';
+import 'package:pave/autentication/views/login.dart';
 import 'package:pave/repositories/auth_repository.dart';
 
 class CHeader extends StatelessWidget {

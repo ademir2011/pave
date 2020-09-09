@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pave/autentication/signup/signup_controller.dart';
-import 'package:pave/components/CHeader.dart';
+import 'package:pave/autentication/controllers/signup_controller.dart';
+import 'package:pave/autentication/views/login.dart';
 import 'package:pave/components/CRaisedButton.dart';
 import 'package:pave/components/cTextFormField.dart';
-import 'package:pave/repositories/auth_repository.dart';
-
-import '../login/login.dart';
 
 class SignUp extends StatefulWidget {
   static final String route = '/signup';
@@ -15,14 +12,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final signUpController = SignUpController();
-
-  void changeEnumTypeRegisterButton(value) {
-    setState(() {
-      signUpController.enumTypeRegisterButton = value;
-    });
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -46,7 +35,6 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
             Form(
-              key: signUpController.formKey,
               child: Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50.0),
@@ -55,54 +43,36 @@ class _SignUpState extends State<SignUp> {
                       child: Column(
                         children: <Widget>[
                           CTextFormField(
-                            controller: signUpController.tffcName,
+                            // controller: signUpController.tffcName,
                             hintText: 'Nome',
-                            validator: (value) =>
-                                value.isEmpty ? 'Sem texto' : null,
+                            validator: (_) {},
                           ),
                           SizedBox(height: 10.0),
                           CTextFormField(
-                            controller: signUpController.tffcEmail,
+                            // controller: signUpController.tffcEmail,
                             hintText: 'E-mail',
-                            validator: (value) =>
-                                (value.isEmpty) ? 'Sem texto' : null,
+                            validator: (_) {},
                           ),
                           SizedBox(height: 10.0),
                           CTextFormField(
-                            controller: signUpController.tffcPassword,
+                            // controller: signUpController.tffcPassword,
                             hintText: 'Senha',
-                            validator: (value) =>
-                                (value.isEmpty) ? 'Sem texto' : null,
+                            validator: (_) {},
                             isPasswordField: true,
                           ),
                           SizedBox(height: 10.0),
                           CTextFormField(
-                            controller: signUpController.tffcPasswordConfirm,
+                            // controller: signUpController.tffcPasswordConfirm,
                             hintText: 'Confirmar Senha',
-                            validator: (value) {
-                              if (value.isEmpty) return 'Sem texto';
-                              if (value !=
-                                  signUpController.tffcPassword.text.trim())
-                                return 'Confirmação de senha diferente';
-                              return null;
-                            },
+                            validator: (_) {},
                             isPasswordField: true,
                           ),
                           SizedBox(height: 50.0),
                           CRaisedButton(
-                            title: signUpController.enumTypeRegisterButton,
-                            onPressed: () async {
-                              if (signUpController.formKey.currentState
-                                  .validate()) {
-                                await signUpController
-                                    .register(changeEnumTypeRegisterButton)
-                                    .then(
-                                  (value) {
-                                    Navigator.pushReplacementNamed(
-                                        context, Login.route);
-                                  },
-                                );
-                              }
+                            title: 'Registrar',
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(
+                                  context, Login.route);
                             },
                           ),
                         ],
